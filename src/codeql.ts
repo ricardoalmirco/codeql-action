@@ -1121,7 +1121,7 @@ export function getExtraOptions(
  */
 const maxErrorSize = 20_000;
 
-async function runTool(cmd: string, args: string[] = []) {
+export async function runTool(cmd: string, args: string[] = []) {
   let output = "";
   let error = "";
   const exitCode = await new toolrunner.ToolRunner(cmd, args, {
