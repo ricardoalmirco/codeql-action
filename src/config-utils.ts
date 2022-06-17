@@ -145,11 +145,6 @@ export interface Config {
    */
   tempDir: string;
   /**
-   * Directory to use for the tool cache.
-   * This may be persisted between jobs but this is not guaranteed.
-   */
-  toolCacheDir: string;
-  /**
    * Path of the CodeQL executable.
    */
   codeQLCmd: string;
@@ -923,7 +918,6 @@ export async function getDefaultConfig(
   debugDatabaseName: string,
   repository: RepositoryNwo,
   tempDir: string,
-  toolCacheDir: string,
   codeQL: CodeQL,
   workspacePath: string,
   gitHubVersion: GitHubVersion,
@@ -971,7 +965,6 @@ export async function getDefaultConfig(
     packs,
     originalUserInput: {},
     tempDir,
-    toolCacheDir,
     codeQLCmd: codeQL.getPath(),
     gitHubVersion,
     dbLocation: dbLocationOrDefault(dbLocation, tempDir),
@@ -996,7 +989,6 @@ async function loadConfig(
   debugDatabaseName: string,
   repository: RepositoryNwo,
   tempDir: string,
-  toolCacheDir: string,
   codeQL: CodeQL,
   workspacePath: string,
   gitHubVersion: GitHubVersion,
@@ -1152,7 +1144,6 @@ async function loadConfig(
     packs,
     originalUserInput: parsedYAML,
     tempDir,
-    toolCacheDir,
     codeQLCmd: codeQL.getPath(),
     gitHubVersion,
     dbLocation: dbLocationOrDefault(dbLocation, tempDir),
@@ -1400,7 +1391,6 @@ export async function initConfig(
   debugDatabaseName: string,
   repository: RepositoryNwo,
   tempDir: string,
-  toolCacheDir: string,
   codeQL: CodeQL,
   workspacePath: string,
   gitHubVersion: GitHubVersion,
@@ -1423,7 +1413,6 @@ export async function initConfig(
       debugDatabaseName,
       repository,
       tempDir,
-      toolCacheDir,
       codeQL,
       workspacePath,
       gitHubVersion,
@@ -1443,7 +1432,6 @@ export async function initConfig(
       debugDatabaseName,
       repository,
       tempDir,
-      toolCacheDir,
       codeQL,
       workspacePath,
       gitHubVersion,
