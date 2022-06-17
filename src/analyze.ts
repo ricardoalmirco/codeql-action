@@ -461,9 +461,9 @@ export async function runFinalize(
   const codeql = await getCodeQL(config.codeQLCmd);
   if (await util.codeQlVersionAbove(codeql, CODEQL_VERSION_NEW_TRACING)) {
     // Delete variables as specified by the end-tracing script
-    await runTool("export");
+    await runTool("bash", ["-c", "export"]);
     await endTracingForCluster(config);
-    await runTool("export");
+    await runTool("bash", ["-c", "export"]);
   } else {
     // Delete the tracer config env var to avoid tracing ourselves
     delete process.env[sharedEnv.ODASA_TRACER_CONFIGURATION];
