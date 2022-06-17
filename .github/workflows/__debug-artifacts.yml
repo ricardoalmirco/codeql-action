@@ -57,4 +57,4 @@ jobs:
         name: debug-artifact-log
         path: |
           /Users/runner/work/_temp/codeql_databases/
-          !path: /Users/runner/work/_temp/codeql_databases/working/copy-root
+          !/Users/runner/work/_temp/codeql_databases/working/copy-root
