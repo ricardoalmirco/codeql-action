@@ -745,13 +745,14 @@ async function getCodeQLForCmd(
           // because that always passes in a process name.
           extraArgs.push(`--trace-process-level=${processLevel || 3}`);
         }
+        extraArgs.push("--internal-use-lua-tracing");
         if (
           await util.codeQlVersionAbove(this, CODEQL_VERSION_LUA_TRACER_CONFIG)
         ) {
           if (await featureFlags.getValue(FeatureFlag.LuaTracerConfigEnabled)) {
-            extraArgs.push("--internal-use-lua-tracing");
+            //
           } else {
-            extraArgs.push("--no-internal-use-lua-tracing");
+            // extraArgs.push("--no-internal-use-lua-tracing");
           }
         }
       }
@@ -829,6 +830,7 @@ async function getCodeQLForCmd(
           "database",
           "trace-command",
           ...getExtraOptionsFromEnv(["database", "trace-command"]),
+          "--internal-use-lua-tracing",
           databasePath,
           "--",
           traceCommand,
@@ -1104,10 +1106,10 @@ export function getExtraOptions(
     paths.length === 0
       ? asExtraOptions(options, pathInfo)
       : getExtraOptions(
-          options?.[paths[0]],
-          paths?.slice(1),
-          pathInfo.concat(paths[0])
-        );
+        options?.[paths[0]],
+        paths?.slice(1),
+        pathInfo.concat(paths[0])
+      );
   return all.concat(specific);
 }
 
