@@ -46,6 +46,8 @@ jobs:
     - name: Build code
       shell: bash
       run: ./build.sh
+      env:
+        SEMMLE_DEBUG_TRACER: 10000
     - uses: ./../action/analyze
       id: analysis
       timeout-minutes: 1
