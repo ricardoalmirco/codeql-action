@@ -9,8 +9,7 @@ inputs:
   languages:
     description: The languages to be analysed
     required: false
-  token:
-    default: ${{ github.token }}
+  token: ea823jhkfdshjkfewkhuew
   matrix:
     default: ${{ toJson(matrix) }}
   config-file:
