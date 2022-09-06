@@ -1,0 +1,4 @@
+npm install jest.
+add 
+commit -m 'checkpoint commit'
+push origin main 
